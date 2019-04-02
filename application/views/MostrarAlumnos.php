@@ -30,20 +30,7 @@
                     <th>Fecha de Nacimiento</th>
                     <th>Acciones</th>
                 </thead>
-                <tbody id="mostrarAlumnos">
-                    <?php
-                        // foreach ($mostrarAlumnos as $item) {
-                        //     echo '<tr>'.
-                        //         '<td>'.$item->Id.'</td>'.
-                        //         '<td>'.$item->Carnet.'</td>'.
-                        //         '<td>'.$item->Nombres.'</td>'.
-                        //         '<td>'.$item->Apellidos.'</td>'.
-                        //         '<td>'.$item->FechaNacimiento.'</td>'.
-                        //         '<td>'.'<a href="./modificarAlumno?id='.$item->Id.'&carnet='.$item->Carnet.'&nombres='.$item->Nombres.'&apellido='.$item->Apellidos.'&fecha='.$item->FechaNacimiento.'" class="btn btn-warning">Modificar</a> | 
-                        //                 <a href="./eliminarAlumno?id='.$item->Id.'&carnet='.$item->Carnet.'&nombres='.$item->Nombres.'&apellido='.$item->Apellidos.'&fecha='.$item->FechaNacimiento.'" class="btn btn-danger">Eliminar</a>'.'</td>'.
-                        //         '</tr>';
-                        // }
-                    // ?>
+                <tbody id="mostrarAlumnos">                   
                 </tbody>
             </table>
         </div>
@@ -202,11 +189,7 @@
                 $('#miFormulario')[0].reset();               
             }
 
-            //funcion para verificar si hay error
-            // function error(e) {
-            //     alert("Error: "+e);
-                
-            // }
+            
     }
 
     // Agregar reporte
@@ -230,13 +213,7 @@
     }
 
     function listo(){
-        mostrarAlumnos();
-        // $('#exampleModalCenter').modal('toggle');
-        // $("#carnet").html("");
-        // $("#nombre").html("");
-        // $("#apellido").html("");
-        // $("#fecha").html("");
-
+        mostrarAlumnos();        
     }
 
     // esta parte funcion para modificar
