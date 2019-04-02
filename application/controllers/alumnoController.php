@@ -22,11 +22,11 @@ class alumnoController extends CI_Controller {
 
     
     //Metodo para mostrar todos los alumnos
-	// public function mostrar()
-	// {
-    //     // $data['mostrarAlumnos'] = $this->alumnoModel->mostrarAlumnos();
-    // $this->load->view('MostrarAlumnos.php'/*,$data*/);
-    // }
+	public function mostrar()
+	{
+        // $data['mostrarAlumnos'] = $this->alumnoModel->mostrarAlumnos();
+    $this->load->view('MostrarAlumnos.php'/*,$data*/);
+    }
 
     //Metodo para redirigir a la vista para agregar alumnos
     // public function agregarAlumno(){
@@ -45,9 +45,9 @@ class alumnoController extends CI_Controller {
     }
     
     //Metodo para redirigir a la vista para modificar alumnos
-    public function modificarAlumno(){
+    public function buscarAlumno(){
         $id = $this->input->post('id');        
-        $data = $this->alumnoModel->updateUno($id);  
+        $data = $this->alumnoModel->buscarUno($id);  
 
         $this->output->set_header("Content-Type: application/json; charset=utf-8");
 

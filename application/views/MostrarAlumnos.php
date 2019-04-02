@@ -135,21 +135,21 @@
             </div>
             <div class="modal-body">
             <form action="" id="miFormulario" method="post">
-              <label for="">Carnet</label>
+            <h5>En Verdad desea Eliminar el Registro?</h5>
+              <label for=""><b>Carnet</b></label><br>
               <input class="form-control" type="hidden" name="IdE" id="IdE" required>
-              <input class="form-control" type="text" name="carnetE" id="carnetE" required>
+              <input class="form-control" type="text" disabled name="carnetE" id="carnetE" required>
+              <label for="" id="carnetEliminar"></label>
               <hr>
-              <label for="">Nombre</label>
-              <input class="form-control" type="text" name="nombreE" id="nombreE" required>
+              <label for=""><b>Nombre</b></label><br>
+              <input class="form-control" type="text" disabled name="nombreE" id="nombreE" required>
+              <label for="" id="nombreEliminar"></label>
               <hr>              
               <div class="form-group">
-                <label for="">Apellido</label>
-                <input class="form-control" type="text" name="apellidoE" id="apellidoE" required>
-              </div>
-              <hr>
-              <label for="">Fecha</label>
-              <input class="form-control" type="date" name="fechaE" id="fechaE" required>
-              <hr>   
+                <label for=""><b>Apellido</b></label><br>
+                <input class="form-control" type="text" disabled name="apellidoE" id="apellidoE" required>
+                <label for="" id="apellidoEliminar"></label>
+              </div>                
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -226,7 +226,7 @@
             },
             success:listo,
             error:error
-        })
+        })              
     }
 
     function listo(){
@@ -245,7 +245,7 @@
         $.ajax({
 
             method:"post",
-            url:"http://localhost/certificacion/index.php/alumnoController/modificarAlumno",
+            url:"http://localhost/certificacion/index.php/alumnoController/buscarAlumno",
             data:{
                 id:id
             },
@@ -303,7 +303,7 @@
         $.ajax({
 
             method:"post",
-            url:"http://localhost/certificacion/index.php/alumnoController/modificarAlumno",
+            url:"http://localhost/certificacion/index.php/alumnoController/buscarAlumno",
             data:{
                 id:id
             },
@@ -320,10 +320,15 @@
         d.forEach(element => {   
             // alert(element.Id);     
             $("#IdE").val(element.Id);
-            $("#carnetE").val(element.Carnet);
-            $("#nombreE").val(element.Nombres);
-            $("#apellidoE").val(element.Apellidos);
-            $("#fechaE").val(element.FechaNacimiento);
+            // $("#carnetE").val(element.Carnet);
+            $("#carnetE").hide();
+            $("#carnetEliminar").show().html(element.Carnet);
+            // $("#nombreE").val(element.Nombres);
+            $("#nombreE").hide();
+            $("#nombreEliminar").show().html(element.Nombres);
+            // $("#apellidoE").val(element.Apellidos);
+            $("#apellidoE").hide();
+            $("#apellidoEliminar").show().html(element.Apellidos);            
          });
     }
 

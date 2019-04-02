@@ -19,7 +19,7 @@ Class alumnoModel extends CI_Model{
     }
 
     //consultar solo un alumno
-    public function updateUno($id)
+    public function buscarUno($id)
     {
         $consulta=$this->db->query('SELECT * FROM `alumnos` WHERE id='.$id.';');
         return $consulta->result();
