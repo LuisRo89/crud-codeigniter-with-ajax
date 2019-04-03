@@ -36,12 +36,22 @@ class alumnoController extends CI_Controller {
     //Metodo para agregar alumnos
     public function insertarAlumnos()
     {
+        if($this->input->post("nombre") && $this->input->post("carnet") && $this->input->post("apellido") && $this->input->post("fecha") != null){
         $carnet = $this->input->post('carnet');
         $nombre = $this->input->post('nombre');
         $apellido = $this->input->post('apellido');
         $fecha = $this->input->post('fecha');
         $data['agregarAlumno'] = $this->alumnoModel->agregarAlumno($carnet, $nombre, $apellido, $fecha);
-        $this->mostrar();
+            echo true;
+        }else{
+            echo false;
+        }
+        // $this->mostrar();
+        // if ($data==true) {
+        //     alert("Dato Agregado");
+        // }else {
+        //     alert("Fallo al agregar");
+        // }
     }
     
     //Metodo para redirigir a la vista para modificar alumnos
@@ -57,13 +67,18 @@ class alumnoController extends CI_Controller {
     //Metodo para modificar alumnos
     public function updateAlumnos()
     {   
+        if($this->input->post("nombre") && $this->input->post("carnet") && $this->input->post("apellido") && $this->input->post("fecha") != null){
         $id = $this->input->post('id');
         $carnet = $this->input->post('carnet');
         $nombre = $this->input->post('nombre');
         $apellido = $this->input->post('apellido');
         $fecha = $this->input->post('fecha');
         $data['updateAlumno'] = $this->alumnoModel->updateAlumno($id, $carnet, $nombre, $apellido, $fecha);
-        $this->mostrar();
+            echo true;
+        }else{
+            echo false;
+        }
+        // $this->mostrar();
     }
 
 
@@ -75,9 +90,14 @@ class alumnoController extends CI_Controller {
     //Metodo para eliminar alumnos
     public function deleteAlumnos()
     {   
+        if($this->input->post("id")!= null){
         $id = $this->input->post('id');
         $data['eliminarAlumno'] = $this->alumnoModel->eliminarAlumno($id);
-        $this->mostrar();
+        echo true;
+        }else{
+            echo false;
+        }
+        // $this->mostrar();
     }
 	
 }

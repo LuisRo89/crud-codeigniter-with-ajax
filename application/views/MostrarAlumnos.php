@@ -12,7 +12,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </head>
 <body>
     <br><br>    
@@ -66,7 +66,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-              <button type="button" name="agregarR" id="agregarR" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+              <button type="submit" name="agregarR" id="agregarR" class="btn btn-primary" data-dismiss="modal">Guardar</button>
             </div>
             </form>
           </div>
@@ -169,6 +169,10 @@
 
                 $("#mostrarAlumnos").html("");
                 
+                    $('#carnet').val(""),
+                    $('#nombre').val(""),
+                    $('#apellido').val(""),
+                    $('#fecha').val("")
 
                 listar.forEach(element => {
                     // console.log(element.Carnet);
@@ -194,10 +198,18 @@
 
     // Agregar reporte
     $('#agregarR').click(function(){
+        // if ($("#carnet").val()=="") {
+        //  $("#agregarR").prop('disabled',true);
+        // }else{ 
         agregarR();
+        // }
     });
     // Peticion agregar reporte
-    function agregarR(){
+    function agregarR(){       
+                        
+        
+            // $("#agregarR").attr('disabled',false);
+       
         $.ajax({
             method:"post",
             url:"http://localhost/certificacion/index.php/alumnoController/insertarAlumnos",
@@ -212,8 +224,59 @@
         })              
     }
 
-    function listo(){
-        mostrarAlumnos();        
+    function listoM(r){
+        if (r==true) {            
+      
+        mostrarAlumnos();
+        Swal.fire(
+        'Good job!',
+        'Modificado con exito!',
+        'success'
+        ) 
+         }else{
+            mostrarAlumnos();
+            Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'No se pudo modificar!',            
+            })   
+         }      
+    }
+
+    function listo(r){
+        if (r==true) {            
+      
+        mostrarAlumnos();
+        Swal.fire(
+        'Good job!',
+        'Añadido con exito!',
+        'success'
+        ) 
+         }else{
+            Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'No se pudo añadir!',            
+            })   
+         }      
+    }
+
+    function listoE(r){
+        if (r==true) {            
+      
+        mostrarAlumnos();
+        Swal.fire(
+        'Good job!',
+        'Eliminado con exito!',
+        'success'
+        ) 
+         }else{
+            Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'No se pudo Eliminar!',            
+            })   
+         }      
     }
 
     // esta parte funcion para modificar
@@ -268,7 +331,7 @@
                 apellido:apellido,                
                 fecha:fecha
             },
-            success:listo,
+            success:listoM,
             error:error
 
     })} //fin de la parte que modifica
@@ -322,7 +385,7 @@
             data:{
                 id:id                
             },
-            success:listo,
+            success:listoE,
             error:error
 
     })} //fin de la parte que elimina
