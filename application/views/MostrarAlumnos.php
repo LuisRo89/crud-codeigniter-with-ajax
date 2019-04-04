@@ -41,7 +41,7 @@
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" modal='toggle' role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-success">
               <h5 class="modal-title" id="exampleModalLongTitle">Agregar</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -77,7 +77,7 @@
 <div class="modal fade" id="exampleModalModif" tabindex="-1" modal='toggle' role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-info">
               <h5 class="modal-title" id="exampleModalLongTitle">Modificar Registro</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -114,7 +114,7 @@
 <div class="modal fade" id="exampleModalEliminar" tabindex="-1" modal='toggle' role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-danger">
               <h5 class="modal-title" id="exampleModalLongTitle">Eliminar Registro</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -253,6 +253,7 @@
         'success'
         ) 
          }else{
+            mostrarAlumnos();
             Swal.fire({
             type: 'error',
             title: 'Oops...',
@@ -271,6 +272,7 @@
         'success'
         ) 
          }else{
+            mostrarAlumnos();
             Swal.fire({
             type: 'error',
             title: 'Oops...',
